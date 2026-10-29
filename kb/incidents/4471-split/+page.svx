@@ -53,16 +53,17 @@ Example: user in nl-NL locale enters "12 May" (12/05), parser reads it as 5 Dece
 | en-US | copper.studio | 5 | #18 |
 | en-US | pale.harbour | 5 | #19 |
 | en-US | nine.lanterns | 4 | #20 |
-| en-GB | nine.lanterns | 4 | #21 |
-| en-GB | copper.studio | 3 | #22 |
-| en-GB | stone.and.sons | 3 | #25 |
-| en-GB | pale.harbour | 3 | #27 |
-| en-GB | alder.physio | 2 | #29 |
-| en-US | long.table | 2 | #31 |
-| en-US | lantern.row | 2 | #35 |
-| en-US | kettle.books | 1 | #37 |
+| en-GB | nine.lanterns | 3 | #21 |
+| en-GB | copper.studio | 2 | #22 |
+| en-GB | pale.harbour | 2 | #63 |
+| en-GB | stone.and.sons | 2 | #64 |
+| en-GB | alder.physio | 2 | #65 |
+| en-US | harbour.dental | 2 | #66 |
+| en-US | long.table | 2 | #67 |
+| en-US | lantern.row | 1 | #68 |
+| en-US | kettle.books | 1 | #69 |
 | en-GB | lantern.row | 1 | #33 |
-| en-GB | long.table | 1 | #39 |
+| en-GB | long.table | 1 | #70 |
 
 ## Fix
 
