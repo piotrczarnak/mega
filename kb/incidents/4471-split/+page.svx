@@ -16,12 +16,12 @@ two distinct problems: the date parser reads all dates as MM/DD regardless of lo
 booking-v3 form displays a MM/DD hint for day-first locale tenants.
 
 <Callout>
-2 distinct problems. Parser: 393 reports. Form hint: 34 reports.
+2 distinct problems. Parser: 379 reports. Form hint: 33 reports.
 </Callout>
 
 ## The two problems
 
-### 1. Parser reads MM/DD for all locales (393 reports)
+### 1. Parser reads MM/DD for all locales (379 reports)
 
 The date parser unconditionally interprets dates as MM/DD without detecting or respecting the
 user's locale. When users in day-first locales enter a date, the month and day values swap.
@@ -32,7 +32,7 @@ Example: User in nl-NL locale enters date "12 May" (12/05), parser reads it as m
 
 **GitHub issue:** #71
 
-### 2. Form hint displays MM/DD for day-first tenants (34 reports)
+### 2. Form hint displays MM/DD for day-first tenants (33 reports)
 
 Booking-v3 form shows MM/DD/YYYY as the date hint. Affected day-first locale tenants are:
 - alder.physio (de-DE)
@@ -56,12 +56,10 @@ Both result in month-day swaps in the reports, but fixing one does not fix the o
 
 ## Coverage by cause
 
-Total reports in #4471: 412 merged
+Total unique reports in #4471: 412 merged
 
 Analysis by cause (ticket classification by channel and form):
 
-- **Parser problem:** 393 reports (95%)
-- **Form hint problem:** 34 reports (8%)
-
-Totals exceed 412 because the source export contains 15 duplicate report IDs.
+- **Parser problem:** 379 reports (92%)
+- **Form hint problem:** 33 reports (8%)
 
