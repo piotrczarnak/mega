@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 · date parser split into 31 problems by locale-tenant'
+title: '#4471 · two problems: parser ignores locale, form hint mismatch'
 owner: support desk
 status: known
 reviewed: 2026-10-29
@@ -11,71 +11,51 @@ signature: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYX
   import Callout from '#lib/kb/Callout.svelte';
 </script>
 
-Ticket #4471 merged 412 reports of dates landing on the wrong day. The problem: the parser
-reads dates as MM/DD (US format) when users in EU locales expect DD/MM.
-
-We split #4471 into 31 issues, one per locale-tenant pair, so the desk can track fixes and
-report coverage.
+Ticket #4471 merged 412 reports of dates landing on the wrong day. Analysis shows two distinct
+problems: the date parser reads all dates as MM/DD regardless of locale, and the booking-v3 form
+displays a MM/DD hint that contradicts day-first tenants' locale expectations.
 
 <Callout>
-31 issues filed. Parser reads MM/DD when locale expects DD/MM.
+2 distinct problems. Parser ignores locale; form hint mismatches tenant locale.
 </Callout>
 
-## The problem
+## The two problems
 
-The date parser does not respect locale-specific formatting. When a user in an EU locale (en-GB,
-pl-PL, it-IT, nl-NL, fr-FR, cs-CZ, da-DK, pt-PT, es-ES, de-DE, en-IE) enters a date as
-DD/MM, the parser reads it as MM/DD. The month and day swap.
+### 1. Parser reads MM/DD for all locales (385 reports)
 
-Example: user in nl-NL locale enters "12 May" (12/05), parser reads it as 5 December (05/12).
+The date parser unconditionally interprets dates as MM/DD without detecting or respecting the
+user's locale. When users in day-first locales (en-GB, pl-PL, it-IT, nl-NL, fr-FR, cs-CZ, da-DK,
+pt-PT, es-ES, de-DE, en-IE) enter a date, the month and day values swap.
 
-## Issues filed
+Example: User in nl-NL locale enters date "12 May" (12/05 in their locale), parser reads it as
+month 05, day 12 = 5 December.
 
-| Locale | Tenant | Reports | Issue |
-|--------|--------|---------|-------|
-| en-GB | harbour.dental | 51 | #1 |
-| pl-PL | nine.lanterns | 38 | #2 |
-| it-IT | long.table | 37 | #3 |
-| nl-NL | kettle.books | 36 | #4 |
-| fr-FR | morrow.tax | 32 | #32 |
-| cs-CZ | lantern.row | 27 | #6 |
-| da-DK | ridge.clinic | 27 | #7 |
-| pt-PT | pale.harbour | 27 | #8 |
-| es-ES | copper.studio | 24 | #9 |
-| de-DE | alder.physio | 23 | #10 |
-| en-IE | stone.and.sons | 23 | #11 |
-| en-US | alder.physio | 12 | #12 |
-| en-GB | kettle.books | 11 | #13 |
-| en-GB | ridge.clinic | 10 | #14 |
-| en-GB | morrow.tax | 6 | #15 |
-| en-US | morrow.tax | 5 | #16 |
-| en-US | stone.and.sons | 5 | #17 |
-| en-US | copper.studio | 5 | #18 |
-| en-US | pale.harbour | 5 | #19 |
-| en-US | nine.lanterns | 4 | #20 |
-| en-GB | nine.lanterns | 3 | #21 |
-| en-GB | copper.studio | 2 | #22 |
-| en-GB | pale.harbour | 2 | #63 |
-| en-GB | stone.and.sons | 2 | #64 |
-| en-GB | alder.physio | 2 | #65 |
-| en-US | harbour.dental | 2 | #66 |
-| en-US | long.table | 2 | #67 |
-| en-US | lantern.row | 1 | #68 |
-| en-US | kettle.books | 1 | #69 |
-| en-GB | lantern.row | 1 | #33 |
-| en-GB | long.table | 1 | #70 |
+**GitHub issue:** #71 (385 reports)
 
-## Fix
+### 2. Form hint displays MM/DD for day-first tenants (42 reports)
 
-The parser must detect locale from browser or user settings and parse dates accordingly:
-- DD/MM for: en-GB, en-IE, pl-PL, it-IT, nl-NL, fr-FR, cs-CZ, da-DK, pt-PT, es-ES, de-DE
-- MM/DD for: en-US (current behavior)
+Booking-v3 form shows MM/DD/YYYY as the date hint, but day-first tenants' users expect DD/MM.
+Users read the hint, enter dates day-first following their locale, and the form processes them
+as month-first — the reverse of what was intended.
 
-This is queued in the main product fix.
+**GitHub issue:** #72 (42 reports)
 
-## Why we split
+## Why two tickets
 
-A big ticket is mostly one bug reported many times. Splitting by locale-tenant lets the desk:
-- Track how many users each fix reaches
-- Test fixes with the right locale settings
-- Close issues as coverage expands
+The root causes differ:
+
+| Problem | Root Cause | Fix |
+|---------|-----------|-----|
+| Parser | Doesn't detect locale | Make parser locale-aware |
+| Form hint | Wrong default for day-first tenants | Show locale-specific hint in booking-v3 |
+
+Both result in month-day swaps in the reports, but fixing one does not fix the other.
+
+## Coverage by cause
+
+Total merged into #4471: 412 reports
+
+- **Parser problem:** 385 reports (91%)
+- **Form hint problem:** 42 reports (9%)
+- **Total:** 427 reports (includes 15 duplicates in source data)
+
