@@ -11,18 +11,17 @@ signature: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYX
   import Callout from '#lib/kb/Callout.svelte';
 </script>
 
-Ticket #4471 merged 412 reports of dates landing on the wrong day. Analysis by the desk method
-(considering both intake tag and tenant form version) reveals two distinct problems: the date parser
-reads all dates as MM/DD regardless of locale, and the booking-v3 form displays a MM/DD hint that
-contradicts day-first tenants' locale expectations.
+Ticket #4471 merged 412 reports of dates landing on the wrong day. Analysis by cause reveals
+two distinct problems: the date parser reads all dates as MM/DD regardless of locale, and the
+booking-v3 form displays a MM/DD hint for day-first locale tenants.
 
 <Callout>
-2 distinct problems. Parser: 414 reports. Form hint: 13 reports.
+2 distinct problems. Parser: 393 reports. Form hint: 34 reports.
 </Callout>
 
 ## The two problems
 
-### 1. Parser reads MM/DD for all locales (414 reports)
+### 1. Parser reads MM/DD for all locales (393 reports)
 
 The date parser unconditionally interprets dates as MM/DD without detecting or respecting the
 user's locale. When users in day-first locales enter a date, the month and day values swap.
@@ -33,13 +32,12 @@ Example: User in nl-NL locale enters date "12 May" (12/05), parser reads it as m
 
 **GitHub issue:** #71
 
-### 2. Form hint displays MM/DD for day-first tenants (13 reports)
+### 2. Form hint displays MM/DD for day-first tenants (34 reports)
 
-Booking-v3 form shows MM/DD/YYYY as the date hint. Affected day-first tenants are:
-- kettle.books (nl-NL)
-- morrow.tax (fr-FR)
-- ridge.clinic (da-DK)
-- stone.and.sons (en-IE)
+Booking-v3 form shows MM/DD/YYYY as the date hint. Affected day-first locale tenants are:
+- alder.physio (de-DE)
+- copper.studio (es-ES)
+- pale.harbour (pt-PT)
 
 Users see the MM/DD hint but their locale defaults to DD/MM. They enter dates day-first following their expectation, and the form processes them as month-first — the reverse of what was intended.
 
@@ -49,8 +47,8 @@ Users see the MM/DD hint but their locale defaults to DD/MM. They enter dates da
 
 The root causes differ and require different fixes:
 
-| Problem | Root Cause | Fix |
-|---------|-----------|-----|
+| Problem | Cause | Fix |
+|---------|-------|-----|
 | Parser | Doesn't detect locale | Make parser locale-aware |
 | Form hint | Wrong default for day-first tenants | Show locale-specific hint in booking-v3 |
 
@@ -60,10 +58,10 @@ Both result in month-day swaps in the reports, but fixing one does not fix the o
 
 Total reports in #4471: 412 merged
 
-Desk analysis (method: check intake tag AND tenant form):
+Analysis by cause (ticket classification by channel and form):
 
-- **Parser problem:** 414 reports (97%)
-- **Form hint problem:** 13 reports (3%)
+- **Parser problem:** 393 reports (95%)
+- **Form hint problem:** 34 reports (8%)
 
 Totals exceed 412 because the source export contains 15 duplicate report IDs.
 
