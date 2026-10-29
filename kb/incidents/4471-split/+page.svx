@@ -33,36 +33,36 @@ Example: user in nl-NL locale enters "12 May" (12/05), parser reads it as 5 Dece
 
 | Locale | Tenant | Reports | Issue |
 |--------|--------|---------|-------|
-| en-GB | harbour.dental | 51 | #32 |
-| pl-PL | nine.lanterns | 38 | #31 |
-| it-IT | long.table | 37 | #39 |
-| nl-NL | kettle.books | 36 | #44 |
+| en-GB | harbour.dental | 51 | #1 |
+| pl-PL | nine.lanterns | 38 | #2 |
+| it-IT | long.table | 37 | #3 |
+| nl-NL | kettle.books | 36 | #4 |
 | fr-FR | morrow.tax | 32 | #32 |
-| cs-CZ | lantern.row | 27 | #34 |
-| da-DK | ridge.clinic | 27 | #36 |
-| pt-PT | pale.harbour | 27 | #38 |
-| es-ES | copper.studio | 24 | #40 |
-| de-DE | alder.physio | 23 | #41 |
-| en-IE | stone.and.sons | 23 | #42 |
-| en-US | alder.physio | 12 | #43 |
-| en-GB | kettle.books | 11 | #44 |
-| en-GB | ridge.clinic | 10 | #45 |
-| en-GB | morrow.tax | 6 | #46 |
-| en-US | morrow.tax | 5 | #47 |
-| en-US | stone.and.sons | 5 | #48 |
-| en-US | copper.studio | 5 | #49 |
-| en-US | pale.harbour | 5 | #50 |
-| en-US | nine.lanterns | 4 | #51 |
-| en-GB | nine.lanterns | 4 | #52 |
-| en-GB | copper.studio | 3 | #53 |
-| en-GB | stone.and.sons | 3 | #55 |
-| en-GB | pale.harbour | 3 | #56 |
-| en-GB | alder.physio | 2 | #57 |
-| en-US | long.table | 2 | #58 |
-| en-US | lantern.row | 2 | #60 |
-| en-US | kettle.books | 1 | #61 |
-| en-GB | lantern.row | 1 | #59 |
-| en-GB | long.table | 1 | #62 |
+| cs-CZ | lantern.row | 27 | #6 |
+| da-DK | ridge.clinic | 27 | #7 |
+| pt-PT | pale.harbour | 27 | #8 |
+| es-ES | copper.studio | 24 | #9 |
+| de-DE | alder.physio | 23 | #10 |
+| en-IE | stone.and.sons | 23 | #11 |
+| en-US | alder.physio | 12 | #12 |
+| en-GB | kettle.books | 11 | #13 |
+| en-GB | ridge.clinic | 10 | #14 |
+| en-GB | morrow.tax | 6 | #15 |
+| en-US | morrow.tax | 5 | #16 |
+| en-US | stone.and.sons | 5 | #17 |
+| en-US | copper.studio | 5 | #18 |
+| en-US | pale.harbour | 5 | #19 |
+| en-US | nine.lanterns | 4 | #20 |
+| en-GB | nine.lanterns | 4 | #21 |
+| en-GB | copper.studio | 3 | #22 |
+| en-GB | stone.and.sons | 3 | #25 |
+| en-GB | pale.harbour | 3 | #27 |
+| en-GB | alder.physio | 2 | #29 |
+| en-US | long.table | 2 | #31 |
+| en-US | lantern.row | 2 | #35 |
+| en-US | kettle.books | 1 | #37 |
+| en-GB | lantern.row | 1 | #33 |
+| en-GB | long.table | 1 | #39 |
 
 ## Fix
 
