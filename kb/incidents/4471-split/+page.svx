@@ -9,6 +9,7 @@ signature: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYX
 
 <script>
   import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
 Ticket #4471 merged 412 reports of dates landing on the wrong day. Analysis identified two distinct 
@@ -48,3 +49,4 @@ The root causes have been addressed by the desk:
 
 Both contributed to #4471's 412 reports. With these changes, the underlying issues affecting users are resolved.
 
+<RenderStamp {signature} />
