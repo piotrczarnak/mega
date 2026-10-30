@@ -4,7 +4,7 @@ title: '#4471 · two problems identified, both resolved'
 owner: support desk
 status: closed
 reviewed: 2026-10-30
-signature: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzMDc1NTMsImV4cCI6MTc5MzM5Mzk1M30.4kW7zqOhuqvfrj2whCA1hOYO7NjOQNcAupYAewVFAKY
+signature: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzMTA2NjksImV4cCI6MTc5MzM5NzA2OX0._CdoI-ytapauml5UXdnKoiMwpYDC3-lZJixS3s5Q7pw
 ---
 
 Ticket #4471 merged 412 reports of dates landing on the wrong day. Analysis identified two distinct problems, both of which the desk has now resolved.
