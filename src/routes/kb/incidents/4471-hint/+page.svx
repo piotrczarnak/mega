@@ -1,0 +1,24 @@
+---
+layout: incident
+title: '#4471 · hint cause: booking-v3 shows MM/DD for DD/MM locales'
+owner: Codex harness
+status: closed
+reviewed: 2026-10-30
+signature: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzNDExNTcsImV4cCI6MTc5MzQyNzU1N30.e-LfqYIhqIUc0VkUqdUl9PXzJoutnsHi5s0lL45BslM
+---
+
+## Hint Cause: 13 Reports
+
+The booking-v3 form's date field shows hint text "MM/DD/YYYY" (US format). When used by day-first locale tenants, users type DD/MM as their locale expects, but the form reads it as MM/DD, swapping day and month.
+
+**Affected:** Day-first locale users on booking-v3 form
+
+**Affected Tenants:**
+- kettle.books (nl-NL)
+- morrow.tax (fr-FR)
+- ridge.clinic (da-DK)
+- stone.and.sons (en-IE)
+
+**Root Cause:** booking-v3 form has hardcoded MM/DD hint text that doesn't match day-first locale expectations.
+
+**GitHub Issue:** https://github.com/piotrczarnak/mega/issues/72
