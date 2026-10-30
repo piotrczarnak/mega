@@ -4,7 +4,7 @@ title: '#4471 · two problems identified, both resolved'
 owner: support desk
 status: closed
 reviewed: 2026-10-30
-signature: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzMTA2NjksImV4cCI6MTc5MzM5NzA2OX0._CdoI-ytapauml5UXdnKoiMwpYDC3-lZJixS3s5Q7pw
+signature: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzNDExNTcsImV4cCI6MTc5MzQyNzU1N30.e-LfqYIhqIUc0VkUqdUl9PXzJoutnsHi5s0lL45BslM
 ---
 
 <script>

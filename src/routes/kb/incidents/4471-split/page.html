@@ -37,6 +37,15 @@
       margin-bottom: 2em;
     }
     .metadata strong { color: #333; }
+    .signature {
+      font-size: 0.85em;
+      color: #999;
+      margin-top: 3em;
+      padding-top: 1em;
+      border-top: 1px solid #eee;
+      font-family: 'Monaco', 'Menlo', monospace;
+      word-break: break-all;
+    }
   </style>
 </head>
 <body>
@@ -49,9 +58,9 @@
     </div>
 
     <h1>#4471 · two problems identified, both resolved</h1>
-    
+
     <div class="callout">
-      <p><strong>Closed 5 October. Parser fixed. Hint form retired.</strong></p>
+      <strong>Closed 5 October. Parser fixed. Hint form retired.</strong>
     </div>
 
     <p>Ticket #4471 merged 412 reports of dates landing on the wrong day. Analysis identified two distinct problems, both of which the desk has now resolved.</p>
@@ -59,33 +68,40 @@
     <h2>The two problems and their resolution</h2>
 
     <h3>1. Parser reads MM/DD for all locales (393 reports) — FIXED</h3>
+
     <p>The date parser unconditionally interpreted dates as MM/DD without respecting locale.</p>
-    
+
     <p><strong>Resolution:</strong> Fixed in commit <code>fix(dates): parse dd/mm for eu locales</code>. The parser now detects locale and parses dates correctly:</p>
+
     <ul>
       <li>DD/MM for day-first locales (en-GB, en-IE, pl-PL, it-IT, nl-NL, fr-FR, cs-CZ, da-DK, pt-PT, es-ES, de-DE)</li>
       <li>MM/DD for month-first locales (en-US, etc.)</li>
     </ul>
+
     <p><strong>Status:</strong> Closed, fixed.</p>
 
     <h3>2. Form hint displays MM/DD for day-first tenants (33 reports) — WON'T FIX</h3>
+
     <p>Booking-v3 form displayed MM/DD/YYYY hint, confusing users in day-first locales.</p>
-    
+
     <p><strong>Resolution:</strong> Won't fix. Booking-v3 form has been retired. Day-first tenants no longer use this form, eliminating the problem.</p>
+
     <p><strong>Status:</strong> Closed, form retired.</p>
 
     <h2>Why both issues are resolved</h2>
+
     <p>The root causes have been addressed by the desk:</p>
+
     <ul>
       <li>Parser problem: Code fix deployed</li>
       <li>Form hint problem: Form withdrawn from service</li>
     </ul>
+
     <p>Both contributed to #4471's 412 reports. With these changes, the underlying issues affecting users are resolved.</p>
 
-    <div class="metadata" style="margin-top: 3em; text-align: right; font-size: 0.8em;">
-      <p>Signed: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzMTA2NjksImV4cCI6MTc5MzM5NzA2OX0._CdoI-ytapauml5UXdnKoiMwpYDC3-lZJixS3s5Q7pw</p>
+    <div class="signature">
+      Signed: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzNDExNTcsImV4cCI6MTc5MzQyNzU1N30.e-LfqYIhqIUc0VkUqdUl9PXzJoutnsHi5s0lL45BslM
     </div>
-
   </div>
 </body>
 </html>
