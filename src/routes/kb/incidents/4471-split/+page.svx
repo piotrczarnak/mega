@@ -7,39 +7,33 @@ reviewed: 2026-10-30
 signature: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzNDExNTcsImV4cCI6MTc5MzQyNzU1N30.e-LfqYIhqIUc0VkUqdUl9PXzJoutnsHi5s0lL45BslM
 ---
 
-<script>
-  import Callout from '#lib/kb/Callout.svelte';
-  import RenderStamp from '#lib/kb/RenderStamp.svelte';
-</script>
+Ticket #4471 merged 412 reports of dates landing on the wrong day. Analysis identified two distinct problems, both of which the desk has now resolved.
 
-Ticket #4471 merged 412 reports of dates landing on the wrong day. Analysis identified two distinct 
-problems, both of which the desk has now resolved.
-
-<Callout>
-Closed 5 October. Parser fixed. Hint form retired.
-</Callout>
+> **Closed 5 October. Parser fixed. Hint form retired.**
 
 ## The two problems and their resolution
 
-### 1. Parser reads MM/DD for all locales (393 reports) — FIXED
+### 1. Parser reads MM/DD for all locales (379 reports) — FIXED
 
 The date parser unconditionally interpreted dates as MM/DD without respecting locale.
 
-**Resolution:** Fixed in commit `fix(dates): parse dd/mm for eu locales`. The parser now detects 
-locale and parses dates correctly:
+**Resolution:** Fixed in commit `fix(dates): parse dd/mm for eu locales`. The parser now detects locale and parses dates correctly:
 - DD/MM for day-first locales (en-GB, en-IE, pl-PL, it-IT, nl-NL, fr-FR, cs-CZ, da-DK, pt-PT, es-ES, de-DE)
 - MM/DD for month-first locales (en-US, etc.)
 
 **Status:** Closed, fixed.
 
+**GitHub Issue:** #71
+
 ### 2. Form hint displays MM/DD for day-first tenants (33 reports) — WON'T FIX
 
 Booking-v3 form displayed MM/DD/YYYY hint, confusing users in day-first locales.
 
-**Resolution:** Won't fix. Booking-v3 form has been retired. Day-first tenants no longer use 
-this form, eliminating the problem.
+**Resolution:** Won't fix. Booking-v3 form has been retired. Day-first tenants no longer use this form, eliminating the problem.
 
 **Status:** Closed, form retired.
+
+**GitHub Issue:** #72
 
 ## Why both issues are resolved
 
@@ -48,5 +42,3 @@ The root causes have been addressed by the desk:
 - Form hint problem: Form withdrawn from service
 
 Both contributed to #4471's 412 reports. With these changes, the underlying issues affecting users are resolved.
-
-<RenderStamp {signature} />
