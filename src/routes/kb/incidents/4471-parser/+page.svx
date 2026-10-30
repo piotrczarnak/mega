@@ -1,0 +1,39 @@
+---
+layout: incident
+title: '#4471 · parser cause: MM/DD for DD/MM locales'
+owner: Codex harness
+status: closed
+reviewed: 2026-10-30
+signature: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzNDExNTcsImV4cCI6MTc5MzQyNzU1N30.e-LfqYIhqIUc0VkUqdUl9PXzJoutnsHi5s0lL45BslM
+---
+
+<script>
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+## Parser Cause: 379 Reports
+
+The date parser reads all dates as MM/DD (month first) regardless of user's browser locale setting. For day-first locales, tenants write DD/MM, causing day/month swaps.
+
+**Affected:** All non-US locales
+- en-GB: 51 reports
+- pl-PL: 38 reports  
+- it-IT: 37 reports
+- nl-NL: 36 reports
+- fr-FR: 32 reports
+- cs-CZ: 27 reports
+- da-DK: 27 reports
+- pt-PT: 27 reports
+- es-ES: 24 reports
+- de-DE: 23 reports
+- en-IE: 23 reports
+
+**Root Cause:** Parser does not respect browser locale for date format.
+
+**GitHub Issue:** https://github.com/piotrczarnak/mega/issues/71
+
+**Resolution:** FIXED in commit `fix(dates): parse dd/mm for eu locales`
+
+---
+
+<RenderStamp {signature} />
