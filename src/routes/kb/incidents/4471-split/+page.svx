@@ -4,7 +4,7 @@ title: '#4471 · two problems identified, both resolved'
 owner: support desk
 status: closed
 reviewed: 2026-10-30
-signature: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzNDYzMjQsImV4cCI6MTc5MzQzMjcyNH0.v6PHd3YEHWf7K6gvIKMo4iWJODfNLMuZpOAtYCkL3bk
+signature: v1.eyJzdWIiOiIyMjg0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzMDc1NTMsImV4cCI6MTc5MzM5Mzk1M30.4kW7zqOhuqvfrj2whCA1hOYO7NjOQNcAupYAewVFAKY
 ---
 
 Ticket #4471 merged 412 reports of dates landing on the wrong day. Analysis identified two distinct problems, both of which the desk has now resolved.
@@ -13,7 +13,7 @@ Ticket #4471 merged 412 reports of dates landing on the wrong day. Analysis iden
 
 ## The two problems and their resolution
 
-### 1. Parser reads MM/DD for all locales (414 reports) — FIXED
+### 1. Parser reads MM/DD for all locales (379 reports) — FIXED
 
 The date parser unconditionally interpreted dates as MM/DD without respecting locale.
 
@@ -25,7 +25,7 @@ The date parser unconditionally interpreted dates as MM/DD without respecting lo
 
 **GitHub Issue:** #71
 
-### 2. Form hint displays MM/DD for day-first tenants (13 reports) — WON'T FIX
+### 2. Form hint displays MM/DD for day-first tenants (33 reports) — WON'T FIX
 
 Booking-v3 form displayed MM/DD/YYYY hint, confusing users in day-first locales.
 
